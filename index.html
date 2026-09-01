@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Aryan X Creates — Aryan Khajuria, Video Editor</title>
 <meta name="description" content="Aryan Khajuria — freelance video editor. Fast, creative, reliable. Cinematic edits, gaming montages, shorts and reels, before/after transformations.">
-<link rel="icon" href="assets/logo.png">
+<link rel="icon" href="assets/logo-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -193,13 +193,13 @@ header.nav.scrolled{
   gap:12px;
 }
 .brand img{
-  height:38px;
-  width:38px;
+  height:42px;
+  width:42px;
   object-fit:cover;
   border-radius:8px;
   transition:height .4s var(--ease);
 }
-header.nav.scrolled .brand img{ height:32px; width:32px; }
+header.nav.scrolled .brand img{ height:36px; width:36px; }
 .brand-text{
   font-family:var(--font-display);
   font-weight:800;
@@ -359,9 +359,9 @@ header.nav.scrolled .brand img{ height:32px; width:32px; }
   gap:0;
 }
 .hero-logo{
-  width:96px; height:96px;
-  object-fit:cover;
-  border-radius:20px;
+  width:min(360px, 72vw); height:auto;
+  object-fit:contain;
+  border-radius:0;
   margin-bottom:28px;
   box-shadow:0 0 0 1px var(--line-strong), 0 30px 60px -20px rgba(30,143,255,.35);
   animation:heroIn .9s var(--ease) both;
@@ -442,7 +442,7 @@ header.nav.scrolled .brand img{ height:32px; width:32px; }
 
 @media (max-width:640px){
   .hero{ padding-top:calc(var(--nav-h) + 4px); }
-  .hero-logo{ width:76px; height:76px; }
+  .hero-logo{ width:min(300px, 82vw); }
 }
 
 /* ============================================================
@@ -593,6 +593,7 @@ header.nav.scrolled .brand img{ height:32px; width:32px; }
   width:100%; height:100%; object-fit:cover;
   transition:transform .7s var(--ease), filter .5s var(--ease);
 }
+.card-media video{ width:100%; height:100%; object-fit:cover; display:block; background:#000; }
 .card-media:hover img{ transform:scale(1.06); filter:brightness(.6); }
 .card-media::after{
   content:'';
@@ -670,210 +671,6 @@ header.nav.scrolled .brand img{ height:32px; width:32px; }
   color:var(--muted);
 }
 .card-empty span{ font-family:var(--font-mono); font-size:12px; letter-spacing:.06em; }
-
-/* ============================================================
-   SHORTS
-============================================================ */
-.shorts{ background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-.shorts-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-  gap:24px;
-  max-width:620px;
-}
-@media (min-width:900px){ .shorts-grid{ max-width:100%; grid-template-columns:repeat(4, minmax(0,1fr)); } }
-
-.short-card{
-  border:1px solid var(--line);
-  background:var(--surface);
-  overflow:hidden;
-}
-.short-media{
-  position:relative;
-  width:100%;
-  aspect-ratio:9/16;
-  background:#000;
-  cursor:pointer;
-  overflow:hidden;
-}
-.short-media img{ width:100%; height:100%; object-fit:cover; transition:transform .7s var(--ease), filter .5s var(--ease); }
-.short-media:hover img{ transform:scale(1.05); filter:brightness(.6); }
-.short-media::after{
-  content:'';
-  position:absolute; inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,.8), transparent 40%);
-}
-.short-media .play-btn{ width:52px; height:52px; }
-.short-label{
-  position:absolute; bottom:14px; left:14px; right:14px; z-index:2;
-  font-family:var(--font-mono);
-  font-size:12px;
-  letter-spacing:.06em;
-  color:var(--white);
-}
-
-/* ============================================================
-   GAMING
-============================================================ */
-.gaming{ position:relative; }
-.gaming-layout{
-  display:grid;
-  grid-template-columns:1fr 300px;
-  gap:40px;
-  align-items:start;
-}
-@media (max-width:900px){ .gaming-layout{ grid-template-columns:1fr; } }
-
-.gaming-player{
-  position:relative;
-  border:1px solid var(--line-strong);
-  background:#000;
-  overflow:hidden;
-}
-.gaming-player video{
-  width:100%;
-  aspect-ratio:16/9;
-  display:block;
-  background:#000;
-}
-.gaming-frame-label{
-  position:absolute; top:16px; left:16px;
-  font-family:var(--font-mono);
-  font-size:11px;
-  letter-spacing:.08em;
-  color:var(--blue-light);
-  background:rgba(4,5,7,.7);
-  border:1px solid var(--line-strong);
-  padding:6px 10px;
-  z-index:3;
-  pointer-events:none;
-}
-.gaming-frame-corner{
-  position:absolute;
-  width:22px; height:22px;
-  border-color:var(--blue);
-  border-style:solid;
-  z-index:3;
-  pointer-events:none;
-}
-.gaming-frame-corner.tl{ top:-1px; left:-1px; border-width:2px 0 0 2px; }
-.gaming-frame-corner.tr{ top:-1px; right:-1px; border-width:2px 2px 0 0; }
-.gaming-frame-corner.bl{ bottom:-1px; left:-1px; border-width:0 0 2px 2px; }
-.gaming-frame-corner.br{ bottom:-1px; right:-1px; border-width:0 2px 2px 0; }
-
-.gaming-tags{
-  display:flex; flex-direction:column; gap:10px;
-}
-.gaming-tags .tag-row-label{
-  font-family:var(--font-mono);
-  font-size:11px;
-  color:var(--muted-2);
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  margin-bottom:6px;
-}
-.gtag{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:12px 14px;
-  border:1px solid var(--line);
-  font-size:13px;
-  color:var(--muted);
-  transition:border-color .3s var(--ease), color .3s var(--ease);
-}
-.gtag:hover{ border-color:var(--blue); color:var(--white); }
-.gtag .dash{ width:14px; height:1px; background:var(--blue); flex:none; }
-
-/* ============================================================
-   BEFORE / AFTER
-============================================================ */
-.ba-shell{
-  border:1px solid var(--line-strong);
-  background:#000;
-}
-.ba-slider{
-  position:relative;
-  width:100%;
-  aspect-ratio:16/9;
-  overflow:hidden;
-  cursor:ew-resize;
-  user-select:none;
-  touch-action:pan-y;
-}
-.ba-slider img{
-  position:absolute; inset:0;
-  width:100%; height:100%; object-fit:cover;
-  pointer-events:none;
-}
-.ba-after{ filter:saturate(1.18) contrast(1.06) brightness(1.02); }
-.ba-before{ filter:grayscale(1) contrast(.9) brightness(.75); }
-.ba-before-wrap{
-  position:absolute; inset:0;
-  overflow:hidden;
-  width:50%;
-  z-index:2;
-}
-.ba-before-wrap img{ width:200%; max-width:none; height:100%; }
-.ba-handle{
-  position:absolute; top:0; bottom:0;
-  left:50%;
-  width:2px;
-  background:var(--blue);
-  z-index:3;
-  box-shadow:0 0 16px 2px var(--blue-glow);
-}
-.ba-handle .grip{
-  position:absolute; top:50%; left:50%;
-  transform:translate(-50%,-50%);
-  width:46px; height:46px;
-  border-radius:50%;
-  background:var(--blue);
-  display:flex; align-items:center; justify-content:center;
-  gap:5px;
-  box-shadow:0 8px 24px -8px var(--blue-glow);
-}
-.ba-handle .grip span{ width:2px; height:14px; background:#04070d; border-radius:1px; }
-.ba-tag{
-  position:absolute; bottom:16px; z-index:4;
-  font-family:var(--font-mono);
-  font-size:11px;
-  letter-spacing:.1em;
-  padding:8px 12px;
-  background:rgba(4,5,7,.72);
-  border:1px solid var(--line-strong);
-}
-.ba-tag.before-tag{ left:16px; }
-.ba-tag.after-tag{ right:16px; }
-.ba-tag b{ display:block; color:var(--white); font-size:13px; letter-spacing:.02em; margin-bottom:2px; }
-.ba-tag span{ color:var(--muted); }
-.ba-tag.after-tag b{ color:var(--blue-light); }
-
-.ba-improvements{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin:28px 0 30px;
-}
-.chip{
-  font-family:var(--font-mono);
-  font-size:11.5px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  padding:9px 16px;
-  border:1px solid var(--line-strong);
-  color:var(--muted);
-  border-radius:2px;
-  transition:all .3s var(--ease);
-}
-.chip:hover{ border-color:var(--blue); color:var(--blue-light); }
-
-.ba-watch{
-  display:flex;
-  align-items:center;
-  gap:16px;
-  flex-wrap:wrap;
-}
 
 /* ============================================================
    SERVICES
@@ -1140,7 +937,7 @@ footer{
   align-items:center;
   gap:14px;
 }
-.footer-brand img{ width:40px; height:40px; border-radius:8px; }
+.footer-brand img{ width:48px; height:48px; border-radius:0; object-fit:contain; }
 .footer-brand h3{
   font-family:var(--font-display);
   font-weight:800;
@@ -1244,253 +1041,6 @@ footer{
 <body>
 
 <a href="#main" class="skip-link">Skip to content</a>
-
-<!-- ============================================================
-     NAV
-============================================================ -->
-<header class="nav" id="siteNav">
-  <div class="nav-inner">
-    <a href="#home" class="brand" aria-label="Aryan X Creates — home">
-      <img src="assets/logo.png" alt="Aryan X Creates logo">
-      <span class="brand-text">Aryan<span>X</span>Creates</span>
-    </a>
-
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#services">Services</a>
-      <a href="#why">Why Me</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="nav-cta">
-      <a href="#contact" class="btn btn-ghost">Get in touch</a>
-      <a href="#contact" class="btn btn-primary">Hire Me</a>
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#home">Home</a>
-  <a href="#about">About</a>
-  <a href="#work">Work</a>
-  <a href="#services">Services</a>
-  <a href="#why">Why Me</a>
-  <a href="#contact">Contact</a>
-  <a href="#contact" class="btn btn-primary btn-block">Hire Me</a>
-</div>
-
-<main id="main">
-
-<!-- ============================================================
-     HERO
-============================================================ -->
-<section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-grain"></div>
-  <div class="sweep" aria-hidden="true"></div>
-
-  <div class="hero-timeline" aria-hidden="true">
-    <svg viewBox="0 0 1400 300" preserveAspectRatio="none">
-      <line x1="0" y1="60" x2="1400" y2="60" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-      <line x1="0" y1="140" x2="1400" y2="140" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-      <line x1="0" y1="220" x2="1400" y2="220" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-      <g fill="rgba(30,143,255,0.35)">
-        <rect x="40" y="45" width="120" height="30" rx="2"/>
-        <rect x="200" y="45" width="220" height="30" rx="2"/>
-        <rect x="460" y="45" width="90" height="30" rx="2"/>
-        <rect x="90" y="125" width="180" height="30" rx="2"/>
-        <rect x="310" y="125" width="130" height="30" rx="2"/>
-        <rect x="60" y="205" width="260" height="30" rx="2"/>
-        <rect x="360" y="205" width="100" height="30" rx="2"/>
-      </g>
-      <g class="playhead">
-        <line x1="500" y1="30" x2="500" y2="250" stroke="#1e8fff" stroke-width="1.5"/>
-        <polygon points="500,20 510,32 490,32" fill="#1e8fff"/>
-      </g>
-    </svg>
-  </div>
-
-  <div class="wrap hero-inner">
-    <img src="assets/logo.png" alt="" class="hero-logo">
-    <p class="hero-kicker">Aryan X Creates</p>
-    <p class="hero-name"><b>Aryan Khajuria</b> — Video Editor</p>
-    <h1 class="hero-headline">Turning raw footage into <span class="hl">content that gets noticed.</span></h1>
-    <p class="hero-sub">I'm Aryan Khajuria, a freelance video editor focused on turning raw footage into engaging, polished and visually powerful content.</p>
-    <div class="hero-ctas">
-      <a href="#work" class="btn btn-primary">View My Work</a>
-      <a href="#contact" class="btn btn-ghost">Let's Work Together</a>
-    </div>
-  </div>
-
-  <div class="hero-scroll" aria-hidden="true">
-    <span>Scroll</span>
-    <div class="line"></div>
-  </div>
-</section>
-
-<!-- ============================================================
-     ABOUT
-============================================================ -->
-<section class="section about" id="about">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">About</span>
-      <h2>The editor behind the edits.</h2>
-    </div>
-
-    <div class="about-grid">
-      <div class="about-copy reveal">
-        <p>My name is Aryan Khajuria. I'm a 20-year-old freelance video editor from Udhampur, Jammu &amp; Kashmir, India. I specialize in transforming raw footage into engaging, polished and visually impactful content. Using Adobe Premiere Pro, I focus on storytelling, pacing, captions, visual effects, sound design and color correction to create edits that keep viewers watching.</p>
-        <p class="about-quote">"A great edit isn't just about cutting clips together — it's about creating an experience."</p>
-        <div class="about-status">
-          <span class="dot"></span>
-          Currently available for freelance video editing work
-        </div>
-      </div>
-
-      <div class="pillars reveal">
-        <div class="pillar">
-          <span class="pillar-num">01</span>
-          <h3>Fast</h3>
-          <p>Quick turnaround without cutting corners.</p>
-        </div>
-        <div class="pillar">
-          <span class="pillar-num">02</span>
-          <h3>Creative</h3>
-          <p>Storytelling-driven edits, not templates.</p>
-        </div>
-        <div class="pillar">
-          <span class="pillar-num">03</span>
-          <h3>Reliable</h3>
-          <p>Clear communication from start to finish.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     WORK — MAIN PORTFOLIO GRID
-============================================================ -->
-<section class="section" id="work">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">My Work</span>
-      <h2>Edited to make every second count.</h2>
-      <p>A running collection of edits — filter by category or scroll through everything below.</p>
-    </div>
-
-    <div class="tabs" id="filterTabs" role="tablist" aria-label="Filter portfolio by category">
-      <button class="tab active" data-filter="all" role="tab" aria-selected="true">All</button>
-      <button class="tab" data-filter="shorts" role="tab" aria-selected="false">Shorts / Reels</button>
-      <button class="tab" data-filter="gaming" role="tab" aria-selected="false">Gaming</button>
-      <button class="tab" data-filter="youtube" role="tab" aria-selected="false">YouTube</button>
-      <button class="tab" data-filter="before-after" role="tab" aria-selected="false">Before &amp; After</button>
-    </div>
-
-    <div class="work-grid" id="workGrid"><!-- injected by JS --></div>
-  </div>
-</section>
-
-<!-- ============================================================
-     SHORTS
-============================================================ -->
-<section class="section shorts" id="shorts">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Shorts / Reels</span>
-      <h2>Shorts that stop the scroll.</h2>
-      <p>Fast-paced edits designed to capture attention from the first second.</p>
-    </div>
-
-    <div class="shorts-grid" id="shortsGrid"><!-- injected by JS --></div>
-  </div>
-</section>
-
-<!-- ============================================================
-     GAMING
-============================================================ -->
-<section class="section gaming" id="gaming">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Gaming Edits</span>
-      <h2>Gameplay → cinematic experience.</h2>
-      <p>Raw gameplay footage cut into something that feels like a trailer, not a clip.</p>
-    </div>
-
-    <div class="gaming-layout">
-      <div class="gaming-player">
-        <div class="gaming-frame-label">Aryan X Creates — Gaming Edit</div>
-        <span class="gaming-frame-corner tl"></span>
-        <span class="gaming-frame-corner tr"></span>
-        <span class="gaming-frame-corner bl"></span>
-        <span class="gaming-frame-corner br"></span>
-        <video controls preload="metadata" poster="assets/gaming-poster.jpg" playsinline>
-          <source src="assets/gaming.mp4" type="video/mp4">
-          Your browser does not support embedded video.
-        </video>
-      </div>
-
-      <div class="gaming-tags">
-        <div class="tag-row-label">Built with</div>
-        <div class="gtag"><span class="dash"></span>Fast cuts</div>
-        <div class="gtag"><span class="dash"></span>Sound design</div>
-        <div class="gtag"><span class="dash"></span>Motion graphics</div>
-        <div class="gtag"><span class="dash"></span>Visual effects</div>
-        <div class="gtag"><span class="dash"></span>Cinematic transitions</div>
-        <div class="gtag"><span class="dash"></span>Color grading</div>
-        <div class="gtag"><span class="dash"></span>Pacing</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     BEFORE / AFTER
-============================================================ -->
-<section class="section" id="before-after">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Before &amp; After</span>
-      <h2>See the difference.</h2>
-      <p>Drag the handle to compare — then watch the full transformation below.</p>
-    </div>
-
-    <div class="ba-shell">
-      <div class="ba-slider" id="baSlider">
-        <img class="ba-after" src="https://img.youtube.com/vi/dz0PX_9SeJc/maxresdefault.jpg" alt="Edited version — after" loading="lazy">
-        <div class="ba-before-wrap" id="baBeforeWrap">
-          <img class="ba-before" src="https://img.youtube.com/vi/dz0PX_9SeJc/maxresdefault.jpg" alt="Raw footage — before" loading="lazy">
-        </div>
-        <div class="ba-handle" id="baHandle">
-          <div class="grip"><span></span><span></span></div>
-        </div>
-        <div class="ba-tag before-tag"><b>Before</b><span>Raw footage</span></div>
-        <div class="ba-tag after-tag"><b>After</b><span>Edited version</span></div>
-      </div>
-    </div>
-
-    <div class="ba-improvements">
-      <span class="chip">Color</span>
-      <span class="chip">Sound</span>
-      <span class="chip">Captions</span>
-      <span class="chip">B-Roll</span>
-      <span class="chip">VFX</span>
-      <span class="chip">Pacing</span>
-      <span class="chip">Storytelling</span>
-    </div>
-
-    <div class="ba-watch">
-      <button class="btn btn-primary" id="watchFullBA">Watch The Full Edit</button>
-      <span style="color:var(--muted); font-size:14px;">See the complete before → after transformation on YouTube.</span>
-    </div>
-  </div>
-</section>
 
 <!-- ============================================================
      SERVICES
@@ -1619,7 +1169,7 @@ footer{
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="assets/logo.png" alt="Aryan X Creates logo">
+        <img src="assets/logo-icon.png" alt="Aryan X Creates logo">
         <div>
           <h3>Aryan X Creates</h3>
           <p class="footer-tag">Turning footage into stories.</p>
@@ -1677,52 +1227,17 @@ const CONTACT_LIST = [
 /* ============================================================
    PORTFOLIO DATA
    Add a new project here to expand the portfolio.
-   type: 'mp4' | 'youtube' | 'youtube-shorts'
-   category: 'shorts' | 'gaming' | 'youtube' | 'before-after'
 ============================================================ */
 const PROJECTS = [
   {
     id: "gaming-01",
     title: "Gaming Montage",
     category: "gaming",
-    tag: "Gaming",
+    tag: "Gaming Edit",
     description: "Fast cuts, sound design and cinematic pacing built from raw gameplay.",
     type: "mp4",
     src: "assets/gaming.mp4",
-    thumbnail: "assets/gaming-poster.jpg",
-    ratio: "16:9"
-  },
-  {
-    id: "short-01",
-    title: "Short Edit 01",
-    category: "shorts",
-    tag: "Shorts / Reels",
-    description: "Fast-paced short-form edit designed to capture attention from frame one.",
-    type: "youtube-shorts",
-    src: "fHTi_8zCvXY",
-    thumbnail: "https://img.youtube.com/vi/fHTi_8zCvXY/hqdefault.jpg",
-    ratio: "9:16"
-  },
-  {
-    id: "short-02",
-    title: "Short Edit 02",
-    category: "shorts",
-    tag: "Shorts / Reels",
-    description: "Quick-cut storytelling built for the scroll.",
-    type: "youtube-shorts",
-    src: "9HWWMwozYww",
-    thumbnail: "https://img.youtube.com/vi/9HWWMwozYww/hqdefault.jpg",
-    ratio: "9:16"
-  },
-  {
-    id: "before-after-01",
-    title: "Before vs After",
-    category: "before-after",
-    tag: "Before & After",
-    description: "Raw footage transformed with color, sound, captions and pacing.",
-    type: "youtube",
-    src: "dz0PX_9SeJc",
-    thumbnail: "https://img.youtube.com/vi/dz0PX_9SeJc/maxresdefault.jpg",
+    thumbnail: "",
     ratio: "16:9"
   }
 ];
@@ -1799,13 +1314,16 @@ function playIconSVG(){
 
 function projectCardHTML(p){
   const ratioClass = p.ratio === "9:16" ? "ratio-9-16" : "";
+  const media = p.type === "mp4"
+    ? `<video src="${p.src}" controls autoplay muted loop playsinline preload="metadata" aria-label="${p.title}"></video>`
+    : `<img src="${p.thumbnail}" alt="${p.title} thumbnail" loading="lazy"><span class="play-btn" aria-hidden="true">${playIconSVG()}</span>`;
+
   return `
     <div class="card" data-category="${p.category}">
-      <div class="card-media ${ratioClass}" data-project="${p.id}" role="button" tabindex="0" aria-label="Play ${p.title}">
+      <div class="card-media ${ratioClass}" data-project="${p.id}">
         <span class="card-tag">${p.tag}</span>
         <span class="card-ratio-badge">${p.ratio}</span>
-        <img src="${p.thumbnail}" alt="${p.title} thumbnail" loading="lazy">
-        <span class="play-btn" aria-hidden="true">${playIconSVG()}</span>
+        ${media}
       </div>
       <div class="card-body">
         <h3>${p.title}</h3>
@@ -1815,72 +1333,10 @@ function projectCardHTML(p){
   `;
 }
 
-function emptyCardHTML(){
-  return `
-    <div class="card" data-category="youtube">
-      <div class="card-empty">
-        <span class="plus">+</span>
-        <span>More YouTube edits coming soon</span>
-      </div>
-    </div>
-  `;
-}
 
 function renderWorkGrid(){
   const grid = document.getElementById("workGrid");
-  grid.innerHTML = PROJECTS.map(projectCardHTML).join("") + emptyCardHTML();
-
-  grid.querySelectorAll(".card-media[data-project]").forEach(el => {
-    el.addEventListener("click", () => openProjectModal(el.dataset.project));
-    el.addEventListener("keydown", (e) => {
-      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openProjectModal(el.dataset.project); }
-    });
-  });
-}
-
-/* ============================================================
-   RENDER: SHORTS GRID
-============================================================ */
-function renderShorts(){
-  const grid = document.getElementById("shortsGrid");
-  const shorts = PROJECTS.filter(p => p.type === "youtube-shorts");
-  grid.innerHTML = shorts.map(p => `
-    <div class="short-card">
-      <div class="short-media" data-project="${p.id}" role="button" tabindex="0" aria-label="Play ${p.title}">
-        <img src="${p.thumbnail}" alt="${p.title} thumbnail" loading="lazy">
-        <span class="play-btn" aria-hidden="true">${playIconSVG()}</span>
-        <span class="short-label">${p.title}</span>
-      </div>
-    </div>
-  `).join("");
-
-  grid.querySelectorAll(".short-media[data-project]").forEach(el => {
-    el.addEventListener("click", () => openProjectModal(el.dataset.project));
-    el.addEventListener("keydown", (e) => {
-      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openProjectModal(el.dataset.project); }
-    });
-  });
-}
-
-/* ============================================================
-   FILTER TABS
-============================================================ */
-function initFilters(){
-  const tabs = document.querySelectorAll(".tab");
-  const cards = () => document.querySelectorAll("#workGrid .card");
-
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      tabs.forEach(t => { t.classList.remove("active"); t.setAttribute("aria-selected","false"); });
-      tab.classList.add("active");
-      tab.setAttribute("aria-selected","true");
-      const filter = tab.dataset.filter;
-      cards().forEach(card => {
-        const match = filter === "all" || card.dataset.category === filter;
-        card.classList.toggle("hide", !match);
-      });
-    });
-  });
+  grid.innerHTML = PROJECTS.map(projectCardHTML).join("");
 }
 
 /* ============================================================
@@ -1898,7 +1354,7 @@ function openProjectModal(id){
   const ratioClass = p.ratio === "9:16" ? "ratio-9-16" : "ratio-16-9";
 
   if(p.type === "mp4"){
-    modalFrame.innerHTML = `<video src="${p.src}" poster="${p.thumbnail}" controls autoplay playsinline></video>`;
+    modalFrame.innerHTML = `<video src="${p.src}" controls autoplay playsinline></video>`;
   } else if(p.type === "youtube-shorts" || p.type === "youtube"){
     modalFrame.innerHTML = `<iframe src="https://www.youtube.com/embed/${p.src}?autoplay=1&rel=0" title="${p.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>`;
   }
@@ -1932,61 +1388,7 @@ modalClose.addEventListener("click", closeModal);
 modalOverlay.addEventListener("click", (e) => { if(e.target === modalOverlay) closeModal(); });
 document.addEventListener("keydown", (e) => { if(e.key === "Escape" && modalOverlay.classList.contains("open")) closeModal(); });
 
-document.getElementById("watchFullBA").addEventListener("click", () => {
-  openYouTubeModal("dz0PX_9SeJc", "Before vs After — full edit");
 });
-
-/* ============================================================
-   BEFORE / AFTER DRAG SLIDER
-============================================================ */
-function initBeforeAfter(){
-  const slider = document.getElementById("baSlider");
-  const beforeWrap = document.getElementById("baBeforeWrap");
-  const handle = document.getElementById("baHandle");
-  let dragging = false;
-
-  function setPos(clientX){
-    const rect = slider.getBoundingClientRect();
-    let pct = ((clientX - rect.left) / rect.width) * 100;
-    pct = Math.max(0, Math.min(100, pct));
-    beforeWrap.style.width = pct + "%";
-    handle.style.left = pct + "%";
-  }
-
-  function start(e){ dragging = true; move(e); }
-  function move(e){
-    if(!dragging) return;
-    const x = e.touches ? e.touches[0].clientX : e.clientX;
-    setPos(x);
-  }
-  function end(){ dragging = false; }
-
-  slider.addEventListener("mousedown", start);
-  window.addEventListener("mousemove", move);
-  window.addEventListener("mouseup", end);
-
-  slider.addEventListener("touchstart", start, {passive:true});
-  window.addEventListener("touchmove", move, {passive:true});
-  window.addEventListener("touchend", end);
-
-  handle.setAttribute("tabindex","0");
-  handle.setAttribute("role","slider");
-  handle.setAttribute("aria-label","Before/after comparison slider");
-  handle.setAttribute("aria-valuemin","0");
-  handle.setAttribute("aria-valuemax","100");
-  handle.setAttribute("aria-valuenow","50");
-  handle.addEventListener("keydown", (e) => {
-    const rect = slider.getBoundingClientRect();
-    let current = parseFloat(beforeWrap.style.width) || 50;
-    if(e.key === "ArrowLeft"){ current = Math.max(0, current - 5); }
-    else if(e.key === "ArrowRight"){ current = Math.min(100, current + 5); }
-    else return;
-    e.preventDefault();
-    beforeWrap.style.width = current + "%";
-    handle.style.left = current + "%";
-    handle.setAttribute("aria-valuenow", String(Math.round(current)));
-  });
-}
 
 /* ============================================================
    NAV: scroll state, active link, mobile menu
@@ -2010,7 +1412,7 @@ function initNav(){
   mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => toggleMenu(false)));
 
   const navLinks = document.querySelectorAll(".nav-links a");
-  const sections = ["home","about","work","services","why","contact"].map(id => document.getElementById(id)).filter(Boolean);
+  const sections = ["home","about","work","services","why","process","contact"].map(id => document.getElementById(id)).filter(Boolean);
   const spy = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
@@ -2045,9 +1447,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderContact();
   renderServices();
   renderWorkGrid();
-  renderShorts();
-  initFilters();
-  initBeforeAfter();
   initNav();
   initReveal();
 });
