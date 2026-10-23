@@ -575,17 +575,33 @@ header.nav.scrolled .brand img{ height:28px; width:28px; padding:5px; }
 /* ============================================================
    PORTFOLIO GRID (masonry columns)
 ============================================================ */
-.work-grid{
+.work-group{ margin-bottom:56px; }
+.work-group:last-child{ margin-bottom:0; }
+.work-group-head{
   display:flex;
-  align-items:flex-start;
-  gap:26px;
+  align-items:baseline;
+  gap:18px;
+  flex-wrap:wrap;
+  padding-bottom:16px;
+  margin-bottom:24px;
+  border-bottom:1px solid var(--line);
 }
-.work-col{
-  display:flex;
-  flex-direction:column;
+.work-group-head h3{ font-size:clamp(24px,3vw,34px); color:var(--white); }
+.work-group-head p{ color:var(--muted); font-size:14px; }
+.group-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
   gap:26px;
-  flex:1 1 0;
-  min-width:0;
+  align-items:start;
+}
+.group-grid.is-shorts{ grid-template-columns:repeat(4, minmax(0,1fr)); }
+@media (max-width:980px){
+  .group-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+  .group-grid.is-shorts{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+}
+@media (max-width:640px){
+  .group-grid{ grid-template-columns:1fr; }
+  .group-grid.is-shorts{ gap:14px; }
 }
 
 .card{
@@ -1418,14 +1434,14 @@ footer{
     <div class="section-head reveal">
       <span class="eyebrow">My Work</span>
       <h2>Edited to make every second count.</h2>
-      <p>A running collection of edits — filter by category or scroll through everything below.</p>
+      <p>A running collection of edits — browse by category or scroll through everything below.</p>
     </div>
 
     <div class="tabs" id="filterTabs" role="tablist" aria-label="Filter portfolio by category">
       <button class="tab active" data-filter="all" role="tab" aria-selected="true">All</button>
-      <button class="tab" data-filter="shorts" role="tab" aria-selected="false">Shorts / Reels</button>
-      <button class="tab" data-filter="gaming" role="tab" aria-selected="false">Gaming</button>
-      <button class="tab" data-filter="youtube" role="tab" aria-selected="false">YouTube</button>
+      <button class="tab" data-filter="vlogs" role="tab" aria-selected="false">YouTube Vlogs</button>
+      <button class="tab" data-filter="gaming" role="tab" aria-selected="false">Gaming Videos</button>
+      <button class="tab" data-filter="shorts" role="tab" aria-selected="false">Shorts &amp; Reels</button>
     </div>
 
     <div class="work-grid" id="workGrid"><!-- injected by JS --></div>
@@ -1617,9 +1633,33 @@ const CONTACT_LIST = [
    PORTFOLIO DATA
    Add a new project here to expand the portfolio.
    type: 'mp4' | 'youtube' | 'youtube-shorts'
-   category: 'shorts' | 'gaming' | 'youtube' | 'before-after'
+   category: 'vlogs' | 'gaming' | 'shorts'
 ============================================================ */
 const PROJECTS = [
+  {
+    id: "vlog-01",
+    title: "Vlog #1",
+    category: "vlogs",
+    tag: "YouTube Vlog",
+    description: "Engaging long-form vlog edit focused on pacing, storytelling and viewer retention.",
+    badge: "Client Edit",
+    type: "youtube",
+    src: "xJRci9gaDAk",
+    thumbnail: "https://img.youtube.com/vi/xJRci9gaDAk/maxresdefault.jpg",
+    ratio: "16:9"
+  },
+  {
+    id: "vlog-02",
+    title: "Vlog #2",
+    category: "vlogs",
+    tag: "YouTube Vlog",
+    description: "Engaging long-form vlog edit focused on pacing, storytelling and viewer retention.",
+    badge: "Client Edit",
+    type: "youtube",
+    src: "BWTY4vyeN8c",
+    thumbnail: "https://img.youtube.com/vi/BWTY4vyeN8c/maxresdefault.jpg",
+    ratio: "16:9"
+  },
   {
     id: "gaming-02",
     title: "Gaming Stream Highlights #1",
@@ -1630,18 +1670,6 @@ const PROJECTS = [
     type: "youtube",
     src: "BFHBvHxC-kk",
     thumbnail: "https://img.youtube.com/vi/BFHBvHxC-kk/maxresdefault.jpg",
-    ratio: "16:9"
-  },
-  {
-    id: "vlog-01",
-    title: "Vlog",
-    category: "youtube",
-    tag: "YouTube",
-    description: "Engaging long-form vlog edit focused on pacing, storytelling and viewer retention.",
-    badge: "Client Edit",
-    type: "youtube",
-    src: "xJRci9gaDAk",
-    thumbnail: "https://img.youtube.com/vi/xJRci9gaDAk/maxresdefault.jpg",
     ratio: "16:9"
   },
   {
@@ -1658,7 +1686,7 @@ const PROJECTS = [
   },
   {
     id: "gaming-04",
-    title: "Gaming Video",
+    title: "Gaming Video #1",
     category: "gaming",
     tag: "Gaming",
     description: "Fast cuts, sound design and cinematic pacing built from raw gameplay.",
@@ -1681,16 +1709,16 @@ const PROJECTS = [
     ratio: "16:9"
   },
   {
-    id: "gaming-short-01",
-    title: "Gaming Short",
+    id: "gaming-05",
+    title: "Gaming Video #2",
     category: "gaming",
     tag: "Gaming",
-    description: "Fast-paced gaming short edited for quick, high-impact viewing.",
+    description: "Fast cuts, sound design and cinematic pacing built from raw gameplay.",
     badge: "Client Edit",
-    type: "youtube-shorts",
-    src: "gkaxDowFV_8",
-    thumbnail: "https://img.youtube.com/vi/gkaxDowFV_8/hqdefault.jpg",
-    ratio: "9:16"
+    type: "youtube",
+    src: "dLpnftcWnSY",
+    thumbnail: "https://img.youtube.com/vi/dLpnftcWnSY/maxresdefault.jpg",
+    ratio: "16:9"
   },
   {
     id: "short-01",
@@ -1714,6 +1742,30 @@ const PROJECTS = [
     type: "youtube-shorts",
     src: "9HWWMwozYww",
     thumbnail: "https://img.youtube.com/vi/9HWWMwozYww/hqdefault.jpg",
+    ratio: "9:16"
+  },
+  {
+    id: "gaming-short-01",
+    title: "Gaming Short #1",
+    category: "shorts",
+    tag: "Shorts / Reels",
+    description: "Fast-paced gaming short edited for quick, high-impact viewing.",
+    badge: "Client Edit",
+    type: "youtube-shorts",
+    src: "gkaxDowFV_8",
+    thumbnail: "https://img.youtube.com/vi/gkaxDowFV_8/hqdefault.jpg",
+    ratio: "9:16"
+  },
+  {
+    id: "gaming-short-02",
+    title: "Gaming Short #2",
+    category: "shorts",
+    tag: "Shorts / Reels",
+    description: "Fast-paced gaming short edited for quick, high-impact viewing.",
+    badge: "Client Edit",
+    type: "youtube-shorts",
+    src: "_zpMlT902Eg",
+    thumbnail: "https://img.youtube.com/vi/_zpMlT902Eg/hqdefault.jpg",
     ratio: "9:16"
   }
 ];
@@ -1832,29 +1884,28 @@ function getWorkColumnCount(){
   return 3;
 }
 
+const WORK_GROUPS = [
+  { key: "vlogs",  title: "YouTube Vlogs",  sub: "Long-form edits built on pacing and storytelling." },
+  { key: "gaming", title: "Gaming Videos",  sub: "High-energy gameplay edits with cinematic pacing." },
+  { key: "shorts", title: "Shorts & Reels", sub: "Fast-paced vertical edits made to stop the scroll." }
+];
+
 function layoutWorkGrid(filter){
   const grid = document.getElementById("workGrid");
-  const colCount = getWorkColumnCount();
-
-  const items = PROJECTS
-    .filter(p => filter === "all" || p.category === filter)
-    .map(p => ({ html: projectCardHTML(p), category: p.category, weight: p.ratio === "9:16" ? 2 : 1 }));
-
-  const placeholder = { html: emptyCardHTML(), category: "youtube", weight: 1 };
-  if(filter === "all" || filter === "youtube") items.push(placeholder);
-
-  const colSums = new Array(colCount).fill(0);
-  const colHtml = new Array(colCount).fill("");
-  items.forEach(item => {
-    let target = 0;
-    for(let i = 1; i < colCount; i++){
-      if(colSums[i] < colSums[target]) target = i;
-    }
-    colSums[target] += item.weight;
-    colHtml[target] += item.html;
-  });
-
-  grid.innerHTML = colHtml.map(html => `<div class="work-col">${html}</div>`).join("");
+  grid.innerHTML = WORK_GROUPS
+    .filter(g => filter === "all" || g.key === filter)
+    .map(g => {
+      const cards = PROJECTS.filter(p => p.category === g.key).map(projectCardHTML).join("");
+      if(!cards) return "";
+      return `
+        <div class="work-group" id="work-${g.key}">
+          <div class="work-group-head">
+            <h3>${g.title}</h3>
+            <p>${g.sub}</p>
+          </div>
+          <div class="group-grid ${g.key === "shorts" ? "is-shorts" : ""}">${cards}</div>
+        </div>`;
+    }).join("");
 
   grid.querySelectorAll(".card-media[data-project]").forEach(el => {
     el.addEventListener("click", () => openProjectModal(el.dataset.project));
